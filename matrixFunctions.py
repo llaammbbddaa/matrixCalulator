@@ -14,9 +14,11 @@ def outputMatrix(m):
         print ("| ", end=" ")
         for j in range(len(m[i])):
             if (m[i][j] <= 9):
+                print(str(m[i][j]), end="   ")
+            elif (m[i][j] <= 99):
                 print(str(m[i][j]), end="  ")
             else:
-                print(str(m[i][j]), end=" ")
+                print(str(m[i][j]), end=(" "))
         print(" |")
     print("\n")
         
@@ -31,7 +33,8 @@ def createMatrix(r,c,inputs):
     for i in range(len(arr)):
         for j in range(len(arr[i])):
             #print("i " + str(i) + " j " + str(j) + " lenNums " + str(len(nums)))
-            arr[i][j] = nums[int((i * (len(nums) / (i + 1)))) + j]
+            arr[i][j] = nums[int((i * c)) + j]
+            #print("arr >> " + str(arr[i][j]) + " index >> " + str(int((i * (len(nums) / (i + 1)))) + j))
                 
     return arr
 
@@ -113,7 +116,7 @@ def gaussian(a, b):
         # just so the code stops before anything else yk
         return
      
-    #initialization of nexessary variables
+    #initialization of necessary variables
     n = len(b)
     m = n - 1
     i = 0
@@ -148,6 +151,7 @@ def gaussian(a, b):
     
     #displaying solution 
     #print("The following x vector matrix solves the above augmented matrix:")
+    output = ""
     for i in range(n):
         output += ("x" + str(i + 1) + " = " + str(x[i]) + ", ")
     print(output)
@@ -157,3 +161,4 @@ def main():
     a = createMatrix(3, 3, "1 1 3 0 1 3 -1 3 0")
     b = createMatrix(3, 1, "1 3 5")
     gaussian(a,b)
+
